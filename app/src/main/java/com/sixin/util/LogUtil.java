@@ -18,13 +18,24 @@ public class LogUtil {
     private static final  boolean DEBUG = true;
 
     /**
-     * 打印debug日志的泛型方法
+     * 打印debug日志的方法
      *@param clazz 打印的日志所在的类的类类型对象
      *@param msg 需要打印的日志内容
      * */
     public static  void d(Class clazz,String msg){
         if(DEBUG){
             Log.d(clazz.getName(),msg);
+        }
+    }
+
+    /**
+     * 打印error日志的方法
+     *@param clazz 打印的日志所在的类的类类型对象
+     *@param msg 需要打印的日志内容
+     * */
+    public static void e(Class clazz,String msg){
+        if(DEBUG){
+            Log.e(clazz.getName(),msg);
         }
     }
 
