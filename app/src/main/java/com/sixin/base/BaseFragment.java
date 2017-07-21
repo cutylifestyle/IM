@@ -10,12 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.sixin.common.Constants;
+import com.sixin.controller.annotation.ControllerInjectUtil;
 import com.sixin.util.LogUtil;
 
 /**
  * @author 周文涛
  */
-public class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment {
 
 
     public BaseFragment() {
@@ -25,10 +26,16 @@ public class BaseFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
-        return null;
+                            Bundle savedInstanceState) {
+        View view = inflater.inflate(setLayoutId(), container, false);
+        ControllerInjectUtil.initInjectedView(this, view);
+        return view;
     }
+
+    /**
+     * 该方法子类必须实现，返回值为fragment的布局id;
+     * */
+    protected abstract int setLayoutId();
 
     /**
      * 通过静态方法创建fragment对象
